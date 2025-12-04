@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "tailwind-clamp" {
+  minsize: 23rem;
+  maxsize: 90rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+
+  /* Ink colors */
+  --color-cyan: #c8d6d6;
+  --color-dark-gray: #343434;
+  --color-terracotta: #d68c69;
+  --color-mint-green: #60eab6;
+  --color-dark-mint-green: #4ad19b;
+}
+
+body {
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  body {
+    color: var(--color-dark-gray);
+    background-color: white;
+  }
+  * {
+    font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  }
+}
+
+@layer components {
+  .page-wrapper > *:not(.no-max-width) {
+    max-width: 90rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (max-width: 90rem) {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+
+      @media (max-width: 768px) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  .responsive-padding {
+    padding-left: 0;
+    padding-right: 0;
+
+    @media (max-width: 90rem) and (min-width: 768px) {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    @media (max-width: 767px) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
